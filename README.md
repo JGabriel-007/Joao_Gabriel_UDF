@@ -16,6 +16,12 @@ Este repositório será utilizado para organizar atividades acadêmicas, exercí
 - Desenvolvendo atividades e projetos acadêmicos;
 - Aprendendo boas práticas de desenvolvimento.
 
+## ✒️ Linguagens Em aprendizado
+
+- HTML
+- Python
+- C
+
 ## 🎯 Objetivo
 
 Construir uma base sólida em programação e, com o tempo, desenvolver projetos cada vez mais completos.
