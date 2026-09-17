@@ -16,7 +16,7 @@ Este repositório será utilizado para organizar atividades acadêmicas, exercí
 - Desenvolvendo atividades e projetos acadêmicos;
 - Aprendendo boas práticas de desenvolvimento.
 
-## ✒️ Linguagens Em aprendizado
+## 💬 Linguagens Em aprendizado
 
 - HTML
 - Python
