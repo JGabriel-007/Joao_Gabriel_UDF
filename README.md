@@ -9,7 +9,7 @@ Este repositório será utilizado para organizar atividades acadêmicas, exercí
 - **Visual Studio Code** — editor utilizado para escrever, organizar e executar meus códigos.
 - **GitHub** — plataforma utilizada para armazenar projetos e registrar minha evolução.
 
-## 📚 Atualmente
+## 📚 Aprendendo
 
 - Cursando Ciência da Computação;
 - Praticando lógica de programação;
