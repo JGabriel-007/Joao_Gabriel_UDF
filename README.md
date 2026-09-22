@@ -21,6 +21,7 @@ Este repositório será utilizado para organizar atividades acadêmicas, exercí
 - HTML
 - Python
 - C
+- CSS
 
 ## 🎯 Objetivo
 
