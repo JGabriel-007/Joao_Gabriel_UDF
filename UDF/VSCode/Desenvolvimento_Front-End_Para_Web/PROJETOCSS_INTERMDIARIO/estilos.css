@@ -1,0 +1,38 @@
+/*
+    Modelo de Caixa
+*/
+
+conteudo {
+    border: 1px solid red;  /*borda da caixa*/
+
+    /*padding-top: 20px;     /* espaçamento superior dentro da caixa
+    padding-left: 20px;    /* espaçamento lateral à esquerda dentro da caixa
+    padding-right: 20px;   /* espaçamento lateral à direita dentro da caixa
+    padding-bottom: 20px;  /* espaçamento lateral à esquerda dentro da caixa*/
+
+    /* podemos também inserir os quatro espaçamentos internos como parâmetros
+       começando pelo topo, no sentido horário */
+    /*padding: 20px 15px 10px 5px;*/
+    /* espaçamento igual nos quatro cantos internos*/
+    padding: 20px; /* padding (preenchimento)*/
+    /* espaçamento igual no topo e bottom e 5px nas laterais esquerda e direita*/
+    /*padding: 20px 5px;*/
+
+    /* pratique cada uma dessas margens externas da boxmodel
+    margin-top: 20px;     /* espaçamento superior fora da caixa 
+    margin-right: 20px;   /* espaçamento lateral à esquerda fora da caixa 
+    margin-left: 20px;    /* espaçamento lateral à direita fora da caixa 
+    margin-bottom: 20px;  /* espaçamento lateral à esquerda fora da caixa*/
+
+    /* Da mesma forma, podemos também inserir os quatro espaçamentos externos
+       com medidas começando pelo topo, no sentido horário */
+    /*margin: 20px 15px 10px 5px;*/
+
+    /* espaçamentos iguais nos quatro cantos externos*/
+    margin: 20px; /* padding (preenchimento)*/
+    /* espaçamento igual no topo e bottom e 5px nas laterais esquerda e direita
+    externos*/
+    /*margin: 20px 5px; */
+    
+    width: 150px; /*largura da caixa*/
+}
