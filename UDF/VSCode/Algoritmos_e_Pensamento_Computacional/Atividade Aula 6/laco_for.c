@@ -16,7 +16,8 @@ int main() {
         for (int j = 1; j <= colunas; j++) {
             printf("[%d,%d] ", i, j);
         }
-
+        
+        printf("\n");
     }
 
     return 0;
