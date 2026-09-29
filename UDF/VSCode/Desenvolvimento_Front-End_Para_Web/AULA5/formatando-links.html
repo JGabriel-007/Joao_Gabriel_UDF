@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Formatando links</title>
+
+    <style>
+        a {
+            padding: 5px 10px;
+            text-decoration: none;
+        }
+
+        /* Links não visitados */
+        a:link {
+            color: #b9c941;
+        }
+
+        /* Links visitados */
+        a:visited {
+            color: #c0c0c0;
+        }
+
+        /* Ao passar o mouse sobre o link */
+        a:hover {
+            color: #ffffff;
+            background: #6d790f;
+        }
+
+        /* Enquanto mantém o clique pressionado */
+        a:active {
+            color: #e4f371;
+        }
+
+        /* Mantenha os estilos nessa ordem:
+           link, visited, hover e active. */
+    </style>
+</head>
+
+<body>
+    <a href="https://www.google.com.br">
+        Google
+    </a>
+    |
+
+    <a href="https://www.tecmundo.com.br">
+        Tec Mundo
+    </a>
+    |
+
+    <a href="https://www.linknaovisitado.com.br">
+        Link não visitado
+    </a>
+    |
+
+    <a href="https://www.megacurioso.com.br">
+        Mega Curioso
+    </a>
+</body>
+</html>

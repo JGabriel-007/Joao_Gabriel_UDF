@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Elementos inline, block e inline-block</title>
+
+    <style>
+        .borda {
+            border: 1px solid red;
+
+            /* Podemos também forçar a exibição dos elementos
+               em bloco, inline ou inline-block. */
+
+            /*
+            display: block;
+            display: inline;
+            display: inline-block;
+            */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Exemplos de elementos em bloco, que ocupam toda a largura disponível -->
+    <h1 class="borda">Bloco 1</h1>
+    <h1 class="borda">Bloco 2</h1>
+
+    <div class="borda">Bloco 3</div>
+
+    <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        Officiis reiciendis magnam sequi rem illum animi hic,
+        aperiam amet eos repellat deleniti, dolorem error!
+        Dolorum vero similique ea ipsa, est dolores.
+    </p>
+
+    <!-- Exemplos de elementos inline, que ficam um ao lado do outro -->
+    <span class="borda">Inline 1</span>
+    <span class="borda">Inline 2</span>
+</body>
+</html>
