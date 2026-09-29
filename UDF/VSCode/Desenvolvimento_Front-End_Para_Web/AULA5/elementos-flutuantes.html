@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Elementos flutuantes — Prática</title>
+
+    <style>
+        body {
+            background: #f4f4f4;
+        }
+
+        #principal {
+            width: 920px;
+        }
+
+        .noticia {
+            background: #e5e5e5;
+            padding: 5px;
+            width: 280px;
+            margin: 7px;
+            float: left;
+        }
+
+        .imagem-galeria {
+            background: white;
+            width: 265px;
+            padding: 5px;
+            margin: 15px;
+            float: left;
+        }
+
+        .imagem-galeria img {
+            width: 265px;
+            height: 210px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .clear {
+            clear: both;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="principal">
+
+        <div>
+            <div class="noticia">
+                <h2>Lorem ipsum dolor sit amet 1</h2>
+
+                <p>
+                    Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit. Perferendis iure ex, quo
+                    voluptatum optio magni molestiae harum
+                    assumenda natus. Qui, at? Voluptate, ex est?
+                    Iure sapiente vero iusto totam esse!
+                </p>
+
+                <a href="#">Veja mais</a>
+            </div>
+
+            <div class="noticia">
+                <h2>Lorem ipsum dolor sit amet 2</h2>
+
+                <p>
+                    Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit. Perferendis iure ex, quo
+                    voluptatum optio magni molestiae harum
+                    assumenda natus. Qui, at? Voluptate, ex est?
+                    Iure sapiente vero iusto totam esse!
+                </p>
+
+                <a href="#">Veja mais</a>
+            </div>
+
+            <div class="noticia">
+                <h2>Lorem ipsum dolor sit amet 3</h2>
+
+                <p>
+                    Lorem ipsum dolor sit amet consectetur
+                    adipisicing elit. Perferendis iure ex, quo
+                    voluptatum optio magni molestiae harum
+                    assumenda natus. Qui, at? Voluptate, ex est?
+                    Iure sapiente vero iusto totam esse!
+                </p>
+
+                <a href="#">Veja mais</a>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+        <div>
+            <div class="imagem-galeria">
+                <img src="imagens/imagem1.jpg" alt="Foto 1 da galeria">
+                <p>Resumo</p>
+            </div>
+
+            <div class="imagem-galeria">
+                <img src="imagens/imagem2.jpg" alt="Foto 2 da galeria">
+                <p>Resumo</p>
+            </div>
+
+            <div class="imagem-galeria">
+                <img src="imagens/imagem3.jpg" alt="Foto 3 da galeria">
+                <p>Resumo</p>
+            </div>
+
+            <div class="imagem-galeria">
+                <img src="imagens/imagem4.jpg" alt="Foto 4 da galeria">
+                <p>Resumo</p>
+            </div>
+
+            <div class="imagem-galeria">
+                <img src="imagens/imagem5.jpg" alt="Foto 5 da galeria">
+                <p>Resumo</p>
+            </div>
+        </div>
+
+        <div class="clear"></div>
+
+    </div>
+</body>
+</html>
