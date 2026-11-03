@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar Clientes</title>
+
+    <!-- Importação do arquivo de estilo externo (opcional) -->
+    <link rel="stylesheet" href="/css/style.css">
+
+    <style>
+        /* Esconde inicialmente as seções de resultado e edição */
+        #resultado, #editar-cliente {
+            display: none;
+        }
+
+        /* Estilos básicos da tabela */
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 15px;
+        }
+
+        /* Estilos das células */
+        th, td {
+            border: 1px solid #ccc;
+            padding: 8px;
+            text-align: left;
+        }
+
+        /* Cor de fundo do cabeçalho */
+        th {
+            background-color: #f0f0f0;
+        }
+
+        /* Cursor do botão */
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Consultar Clientes</h1>
+
+    <!-- Formulário de consulta de clientes -->
+    <form action="/consultarCliente" method="post">
+        <label for="nome">Nome do Cliente:</label><br>
+        <input type="text" id="nome" name="nome" required><br><br>
+
+        <!-- Botão que envia o nome para o servidor consultar -->
+        <input type="submit" value="Consultar">
+
+        <!-- Botão que redireciona para a tela inicial (inserir cliente) -->
+        <input type="submit" value="Inserir Cliente" onclick="window.location.href='http://localhost:3000';">
+    </form>
+
+    <!-- Div que conterá a tabela de resultados da consulta -->
+    <div id="resultado">
+        <h2>Resultados:</h2>
+        <table id="tabela-cliente">
+            <thead>
+                <tr>
+                    <!-- Cabeçalho da tabela -->
+                    <th>ID</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Telefone</th>
+                    <th>Endereço</th>
+                    <th>Ações</th> <!-- Nova coluna com o botão Editar -->
+                </tr>
+            </thead>
+            <tbody id="tabela-cliente-corpo">
+                <!-- As linhas de resultado serão criadas dinamicamente pelo JavaScript -->
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Formulário para edição de dados do cliente -->
+    <div id="editar-cliente">
+        <h1>Editar Cliente</h1>
+        <form id="form-editar" action="/editarCliente" method="post">
+
+            <!-- Campo oculto para armazenar o ID do cliente (necessário para atualização) -->
+            <input type="hidden" id="edit-id" name="id">
+
+            <!-- Campos de entrada para editar os dados -->
+            <label for="edit-nome">Nome:</label><br>
+            <input type="text" id="edit-nome" name="nome" required><br><br>
+
+            <label for="edit-email">Email:</label><br>
+            <input type="email" id="edit-email" name="email" required><br><br>
+
+            <label for="edit-telefone">Telefone:</label><br>
+            <input type="text" id="edit-telefone" name="telefone" required><br><br>
+
+            <label for="edit-endereco">Endereço:</label><br>
+            <input type="text" id="edit-endereco" name="endereco" required><br><br>
+
+            <!-- Botão que envia os dados alterados ao servidor -->
+            <input type="submit" value="Salvar Alterações">
+        </form>
+    </div>
+
+    <script>
+        // -------------------------------
+        // SEÇÃO DE LÓGICA DO JAVASCRIPT
+        // -------------------------------
+
+        // Verifica se a consulta foi realizada, usando o valor salvo no localStorage
+        const consultaRealizada = localStorage.getItem('consultaRealizada') === 'true';
+
+        // Recupera os dados da chave 'clientes' armazenados no localStorage (string JSON)
+        const clientesString = localStorage.getItem('clientes');
+
+        // Remove os dados antigos do localStorage para evitar duplicações
+        localStorage.removeItem('clientes');
+        localStorage.removeItem('consultaRealizada');
+
+        // Converte a string JSON em um array de objetos (clientes)
+        // Caso não haja dados, inicializa um array vazio
+        const clientes = clientesString ? JSON.parse(clientesString) : [];
+
+        // Se a consulta foi realmente realizada (flag verdadeira)
+        if (consultaRealizada) {
+
+            // Exibe a div de resultados (a tabela)
+            const resultadoDiv = document.getElementById('resultado');
+            resultadoDiv.style.display = 'block';
+
+            // Verifica se o array de clientes está vazio
+            if (Array.isArray(clientes) && clientes.length === 0) {
+                alert("Cliente não encontrado.");
+            } else {
+
+                // Seleciona o corpo da tabela (onde as linhas serão adicionadas)
+                const tabela = document.getElementById('tabela-cliente-corpo');
+
+                // Limpa qualquer conteúdo anterior na tabela
+                tabela.innerHTML = '';
+
+                // Percorre o array de clientes retornados
+                clientes.forEach(cliente => {
+
+                    // Cria uma nova linha (<tr>) para o cliente
+                    const linha = document.createElement('tr');
+
+                    // Define o conteúdo das células (<td>) da linha
+                    linha.innerHTML = `
+                        <td>${cliente.id}</td>
+                        <td>${cliente.nome}</td>
+                        <td>${cliente.email}</td>
+                        <td>${cliente.telefone}</td>
+                        <td>${cliente.endereco}</td>
+                        <td><button type="button" class="editar-btn">Editar</button></td>
+                    `;
+
+                    // Adiciona um evento ao botão "Editar"
+                    linha.querySelector('.editar-btn').addEventListener('click', () => {
+
+                        // Exibe o formulário de edição
+                        document.getElementById('editar-cliente').style.display = 'block';
+
+                        // Preenche os campos do formulário com os dados do cliente selecionado
+                        document.getElementById('edit-id').value = cliente.id;
+                        document.getElementById('edit-nome').value = cliente.nome;
+                        document.getElementById('edit-email').value = cliente.email;
+                        document.getElementById('edit-telefone').value = cliente.telefone;
+                        document.getElementById('edit-endereco').value = cliente.endereco;
+
+                        // Rola a página suavemente até o formulário de edição
+                        window.scrollTo({ top: document.body.scrollHeight, behavior: 'smooth' });
+                    });
+
+                    // Adiciona a linha criada à tabela
+                    tabela.appendChild(linha);
+                });
+            }
+        }
+
+        // Verifica na URL se há uma mensagem de confirmação de edição
+        const urlParams = new URLSearchParams(window.location.search);
+        const mensagem = urlParams.get('mensagem');
+
+        // Se o parâmetro "mensagem" for "editado", mostra um alerta de sucesso
+        if (mensagem === 'editado') {
+            alert('Cliente editado com sucesso!');
+        }
+    </script>
+</body>
+</html>

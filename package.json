@@ -1,0 +1,25 @@
+{
+  "name": "joao_gabriel_udf",
+  "version": "1.0.0",
+  "description": "Sou estudante de **Ciência da Computação na UDF** e estou desenvolvendo meus conhecimentos em programação, desenvolvimento web e modelagem de banco de dados.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JGabriel-007/Joao_Gabriel_UDF.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/JGabriel-007/Joao_Gabriel_UDF/issues"
+  },
+  "homepage": "https://github.com/JGabriel-007/Joao_Gabriel_UDF#readme",
+  "dependencies": {
+    "body-parser": "^2.4.0",
+    "espress": "^0.0.0"
+  }
+}
