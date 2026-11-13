@@ -114,7 +114,6 @@ WHERE S.CARGO IN (SELECT STAFF.CARGO
 
 -- Exercício 08
 -- Atualize uma tabela comissão de 10% para os GERENTES da MATRIZ
-
 UPDATE STAFF, ORG
 SET STAFF.COMIS = STAFF.SALARIO * 0.10
 WHERE ORG.DEPTCOD = STAFF.DEPT
@@ -136,14 +135,11 @@ WHERE ORG.DEPTCOD = STAFF.DEPT
 -- Apresente a quantidade de funcionários por filial e
 -- depois apresente na sequência, a quantidade de funcionários por
 -- região do país
-
 SELECT ORG.DIVISAO,
        COUNT(STAFF.ID) AS 'QTD FUNCIONÁRIOS'
 FROM ORG INNER JOIN STAFF ON ORG.DEPTCOD = STAFF.DEPT
 GROUP BY ORG.DIVISAO
-
 UNION
-
 SELECT ORG.DEPTNOME,
        COUNT(STAFF.ID)
 FROM ORG INNER JOIN STAFF ON ORG.DEPTCOD = STAFF.DEPT
