@@ -69,3 +69,82 @@ ORDER BY 1 DESC;
 -- MIN( ) - retorna o menor valor
 -- COUNT( ) - retorna a contagem (quantidade)
 -- AVG( ) - retorna a média (mesmo que SUM() / COUNT())
+
+-- Exercício 05
+-- Mostre em apenas uma coluna maior SALÁRIO reajustado de 15%,
+-- juntamente com o NOME do funcionário e o LOCAL de tarbalho
+-- na empresa
+SELECT
+    S.SALARIO * 1.15 AS 'Salario reajustado em 15%'
+FROM STAFF AS S
+UNION ALL
+SELECT
+    S1.NOME
+FROM STAFF AS S1
+UNION ALL
+SELECT
+    O.LOCAL
+FROM ORG AS O;
+
+-- Exercício 06
+-- Selecione o NOME, o CARGO e TEMPO DE SERVIÇO dos
+-- funcionários que recebem as três maiores comissões
+SELECT FUNC.NOME AS 'NOME FUNCIONÁRIO',
+	   FUNC.CARGO,
+       FUNC.ANOS AS 'TEMPO DE SERVIÇO',
+       FUNC.COMIS AS 'COMISSÃO'
+FROM STAFF AS FUNC
+WHERE FUNC.COMIS IS NOT NULL
+ORDER BY 4 DESC LIMIT 3; -- Classificando da maior comissão
+						 -- para a menor, e limitando o resultado
+                         -- nas 3 primeiras linhas
+                         
+-- Exercício 07
+-- Selecione todas as informações dos funcionários,
+-- agrupados por CARGO, que tenham a média de SALÁRIO
+-- inferior à média dos salários da empresa (companhia)
+SELECT S.*
+FROM STAFF as S
+WHERE S.CARGO IN (SELECT STAFF.CARGO
+                 FROM STAFF
+                 GROUP BY STAFF.CARGO
+                 HAVING AVG(STAFF.SALARIO) <
+                        (SELECT AVG(S2.SALARIO)
+                                FROM STAFF as S2));
+
+-- Exercício 08
+-- Atualize uma tabela comissão de 10% para os GERENTES da MATRIZ
+
+UPDATE STAFF, ORG
+SET STAFF.COMIS = STAFF.SALARIO * 0.10
+WHERE ORG.DEPTCOD = STAFF.DEPT
+  AND STAFF.CARGO LIKE 'GER'
+  AND ORG.DEPTNOME LIKE 'MATRIZ';
+
+SELECT ORG.DEPTCOD,
+       ORG.DEPTNOME,
+       STAFF.NOME,
+       STAFF.CARGO,
+       STAFF.SALARIO,
+       STAFF.COMIS
+FROM STAFF, ORG
+WHERE ORG.DEPTCOD = STAFF.DEPT
+  AND STAFF.CARGO LIKE 'GER'
+  AND ORG.DEPTNOME = 'MATRIZ';
+  
+-- Exercício 09
+-- Apresente a quantidade de funcionários por filial e
+-- depois apresente na sequência, a quantidade de funcionários por
+-- região do país
+
+SELECT ORG.DIVISAO,
+       COUNT(STAFF.ID) AS 'QTD FUNCIONÁRIOS'
+FROM ORG INNER JOIN STAFF ON ORG.DEPTCOD = STAFF.DEPT
+GROUP BY ORG.DIVISAO
+
+UNION
+
+SELECT ORG.DEPTNOME,
+       COUNT(STAFF.ID)
+FROM ORG INNER JOIN STAFF ON ORG.DEPTCOD = STAFF.DEPT
+GROUP BY ORG.DEPTNOME;
